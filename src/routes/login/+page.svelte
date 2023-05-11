@@ -1,42 +1,29 @@
 <div
-	class="fixed w-full left-[50%] sm:max-w-screen-sm top-[50%] translate-x-[-50%] translate-y-[-50%]"
+	class="fixed w-full left-[50%] sm:max-w-screen-sm top-[50%] translate-x-[-50%] translate-y-[-50%] bg-inherit"
 >
-	<div class="relative flex flex-col w-full h-full gap-8 px-10 sm:px-0">
-		<h2 class="text-2xl font-black uppercase text-secondary-900-50-token">Login</h2>
+	<div
+		class="relative flex flex-col w-full h-full gap-8 p-10 sm:p-20 bg-[whitesmoke]/10 shadow shadow-primary-700/60 rounded-md"
+	>
+		<h2 class="text-2xl font-black uppercase text-primary-500">Login</h2>
 
 		<form method="POST">
 			<div class="flex flex-col gap-8">
-				<hgroup class="space-y-2">
-					<label class="text-base capitalize text-neutral-700" for="username">Username</label>
-					<input
-						class="w-full p-4 rounded-md input"
-						type="text"
-						id="username"
-						name="username"
-						required
-					/>
-				</hgroup>
+				<div class="flex flex-col gap-2">
+					<label for="username">Username</label>
+					<input class="p-4" type="text" id="username" name="username" required />
+				</div>
 
-				<hgroup class="space-y-2">
-					<label class="text-base capitalize text-neutral-700" for="password">Password</label>
-					<input
-						class="w-full p-4 rounded-md input"
-						type="password"
-						id="password"
-						name="password"
-						required
-					/>
-				</hgroup>
+				<div class="flex flex-col gap-2">
+					<label for="password">Password</label>
+					<input class="p-4" type="password" id="password" name="password" required />
+				</div>
 
-				<button class="btn btn-lg text-on-secondary-token bg-secondary-backdrop-token" type="submit"
-					>Login</button
-				>
+				<button class="btn btn-lg text-on-surface-token bg-surface-700" type="submit">Login</button>
 			</div>
 		</form>
-		<p>
-			Don't have an account? <a class="anchor text-secondary-900-50-token" href="/register"
-				>Register</a
-			>
-		</p>
+		<div class="flex items-center gap-2">
+			<span> Don't have an account? </span>
+			<a class="anchor text-primary-900" href="/register">Register</a>
+		</div>
 	</div>
 </div>
