@@ -10,14 +10,143 @@
 
 html,
 body {
-	@apply h-full overflow-hidden;
+	@apply h-screen overflow-hidden;
+}
+body {
+	@apply font-sans bg-surface-100 dark:bg-surface-900 text-black dark:text-white;
 }
 
-body {
-	background-image: radial-gradient(
-			at 0% 0%,
-			rgba(var(--color-secondary-500) / 0.33) 0px,
-			transparent 50%
-		),
-		radial-gradient(at 98% 1%, rgba(var(--color-error-500) / 0.33) 0px, transparent 50%);
+.dark body {
+	/* Via: https://csshero.org/mesher/ */
+	background-image: radial-gradient(at 32% 66%, rgba(var(--color-primary), 0.33) 0, transparent 53%),
+		radial-gradient(at 80% 20%, rgba(var(--color-secondary), 0.33) 0, transparent 56%),
+		radial-gradient(at 63% 56%, rgba(var(--color-primary), 0.33) 0, transparent 59%);
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+/* --- Scrollbars --- */
+
+/* Scrollbars (webkit) */
+::-webkit-scrollbar {
+	@apply w-2;
+}
+::-webkit-scrollbar-track {
+	@apply bg-white/20 dark:bg-black/20;
+}
+::-webkit-scrollbar-thumb {
+	@apply rounded-full bg-primary-300 dark:bg-primary-700;
+}
+
+/* Hide Scrollbars */
+.hide-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+.hide-scrollbar {
+	-ms-overflow-style: none; /* IE/Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+/* --- Typography --- */
+
+/* Headings */
+h1 {
+	@apply text-4xl md:text-6xl font-bold;
+}
+h2 {
+	@apply text-3xl md:text-4xl font-bold;
+}
+h3 {
+	@apply text-2xl md:text-3xl font-bold;
+}
+h4 {
+	@apply text-xl md:text-2xl font-bold;
+}
+h5 {
+	@apply text-lg md:text-xl font-bold;
+}
+h6 {
+	@apply text-base md:text-lg font-bold;
+}
+
+/* Code */
+pre:not(.codeblock pre) {
+	@apply bg-primary-700 dark:bg-black/20 text-primary-50 p-4 whitespace-pre-wrap text-base overflow-x-auto rounded;
+}
+code:not(.codeblock code) {
+	@apply bg-primary-500/30 text-black dark:text-white text-xs py-1 px-2 rounded;
+}
+
+/* Page Styles */
+main p {
+	@apply text-base text-primary-500 dark:text-primary-400;
+}
+main a:not(.comp-button):not(.crumb a):not(.list-item):not(.logo) {
+	@apply text-primary-500 underline underline-offset-4 decoration-primary-500/20 decoration-dotted;
+}
+
+/* --- Forms --- */
+
+fieldset {
+	@apply block;
+}
+
+/* Inputs */
+[type='text'],
+[type='email'],
+[type='url'],
+[type='password'],
+[type='number'],
+[type='date'],
+[type='datetime-local'],
+[type='month'],
+[type='search'],
+[type='tel'],
+[type='time'],
+[type='week'],
+[multiple],
+textarea,
+select {
+	@apply w-full border bg-primary-50 border-black/40 rounded-lg shadow-sm;
+	@apply dark:bg-primary-100 dark:border-primary-500;
+	@apply focus:ring-primary-500;
+}
+
+/* Selectable */
+[type='checkbox'],
+[type='radio'] {
+	@apply border-primary-500 rounded focus:ring-primary-500;
+}
+
+/* Invalid - https://www.bram.us/2021/01/28/form-validation-you-want-notfocusinvalid-not-invalid/ */
+/* input:not(:focus):not(:placeholder-shown):invalid {
+	@apply border-warning-300;
+} */
+
+/* Placeholders */
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+	@apply text-primary-400;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+	@apply text-primary-400;
+}
+input::placeholder,
+textarea::placeholder {
+	@apply text-primary-400;
+}
+
+/* Labels */
+label {
+	@apply block overflow-visible font-semibold;
+}
+label span,
+legend {
+	@apply block text-primary-700 dark:text-primary-300 text-sm mb-2;
+}
+
+/* Accent Color - https://developer.mozilla.org/en-US/docs/Web/CSS/accent-color */
+[type='range']:not(.range-input) {
+	@apply w-full accent-neutral-500;
 }

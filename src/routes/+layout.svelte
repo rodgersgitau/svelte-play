@@ -5,42 +5,49 @@
 
 	import type { PageData } from './$types';
 	export let data: PageData;
-	import { AppBar, AppShell } from '@skeletonlabs/skeleton';
+	import { AppBar, LightSwitch } from '@skeletonlabs/skeleton';
 </script>
 
-<div class="w-full h-full p-4 mx-auto">
-	<AppBar class="px-8 py-6 !bg-transparent rounded-md shadow">
+<div class="w-full h-full bg-inherit">
+	<AppBar class="px-8 py-6 !bg-inherit border-b border-current">
 		<svelte:fragment slot="lead">
 			<strong>
 				<a href="/"> Svelte Play </a>
 			</strong>
 		</svelte:fragment>
 		<svelte:fragment slot="trail">
-			<ul>
-				<form method="POST">
-					<div class="flex flex-row gap-4">
-						{#if !data.user}
-							<li>
-								<a
-									class="rounded-md btn btn-sm bg-primary-active-token text-on-primary-token"
-									href="/register">Register</a
-								>
-							</li>
-							<li>
-								<a
-									class="rounded-md btn btn-sm bg-secondary-active-token text-on-secondary-token"
-									href="/login"
-									role="button">Login</a
-								>
-							</li>
-						{:else}
-							<li>
-								<button class="btn btn-sm" formaction="/logout" type="submit">Logout</button>
-							</li>
-						{/if}
-					</div>
-				</form>
-			</ul>
+			<div class="flex items-center gap-8">
+				<ul class="font-sans font-medium">
+					<form method="POST">
+						<div class="flex flex-row gap-4">
+							{#if !data.user}
+								<li>
+									<a
+										class="rounded-md btn btn-sm border border-tertiary-900-50-token text-tertiary-900-50-token"
+										href="/register">Register</a
+									>
+								</li>
+								<li>
+									<a
+										class="rounded-md btn btn-sm bg-primary-900-50-token text-tertiary-50-900-token"
+										href="/login"
+										role="button">Login</a
+									>
+								</li>
+							{:else}
+								<li>
+									<button class="btn btn-sm" formaction="/logout" type="submit">Logout</button>
+								</li>
+							{/if}
+						</div>
+					</form>
+				</ul>
+				<div
+					class="h-8 w-16 flex items-center rounded-md overflow-hidden border border-primary-500/50"
+				>
+					<LightSwitch width="w-full" height="h-full" />
+				</div>
+			</div>
 		</svelte:fragment>
 	</AppBar>
 	<!-- ---- / ---- -->
