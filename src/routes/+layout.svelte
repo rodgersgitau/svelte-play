@@ -15,7 +15,7 @@
 	const modeStore: Writable<string> = localStorageStore('modeCurrent', 'false');
 	const unsubscribe = modeStore.subscribe((mode) => {
 		mode ? (theme = 'light') : (theme = 'dark');
-		return;
+		return false;
 	});
 	onDestroy(unsubscribe);
 </script>

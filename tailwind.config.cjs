@@ -23,6 +23,10 @@ const config = {
 					900: '#000000',
 					950: '#000000'
 				}
+			},
+			backgroundImage: {
+				bgSpace: "url('/images/bg-space.jpg')",
+				bgTexture: "url('/images/bg-texture.jpg')"
 			}
 		}
 	},
