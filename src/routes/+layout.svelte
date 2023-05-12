@@ -4,54 +4,37 @@
 	import '../app.postcss';
 
 	import type { PageData } from './$types';
+	import { onDestroy } from 'svelte';
+	import type { Writable } from 'svelte/store';
+	import { AppBar, localStorageStore } from '@skeletonlabs/skeleton';
+	import Nav from '../components/Nav.svelte';
+	import MobileNav from '../components/MobileNav.svelte';
+
 	export let data: PageData;
-	import { AppBar, LightSwitch } from '@skeletonlabs/skeleton';
+	export let theme: 'light' | 'dark' = 'light';
+	const modeStore: Writable<string> = localStorageStore('modeCurrent', 'false');
+	const unsubscribe = modeStore.subscribe((mode) => {
+		mode ? (theme = 'light') : (theme = 'dark');
+		return;
+	});
+	onDestroy(unsubscribe);
 </script>
 
-<div class="w-full h-full bg-inherit">
-	<AppBar class="px-8 py-6 !bg-inherit border-b border-current">
-		<svelte:fragment slot="lead">
-			<strong>
-				<a href="/"> Svelte Play </a>
-			</strong>
-		</svelte:fragment>
-		<svelte:fragment slot="trail">
-			<div class="flex items-center gap-8">
-				<ul class="font-sans font-medium">
-					<form method="POST">
-						<div class="flex flex-row gap-4">
-							{#if !data.user}
-								<li>
-									<a
-										class="rounded-md btn btn-sm border border-tertiary-900-50-token text-tertiary-900-50-token"
-										href="/register">Register</a
-									>
-								</li>
-								<li>
-									<a
-										class="rounded-md btn btn-sm bg-primary-900-50-token text-tertiary-50-900-token"
-										href="/login"
-										role="button">Login</a
-									>
-								</li>
-							{:else}
-								<li>
-									<button class="btn btn-sm" formaction="/logout" type="submit">Logout</button>
-								</li>
-							{/if}
-						</div>
-					</form>
-				</ul>
-				<div
-					class="h-8 w-16 flex items-center rounded-md overflow-hidden border border-primary-500/50"
-				>
-					<LightSwitch width="w-full" height="h-full" />
-				</div>
-			</div>
-		</svelte:fragment>
-	</AppBar>
-	<!-- ---- / ---- -->
-	<!-- Router Slot -->
-	<slot />
-	<!-- ---- / ---- -->
+<div class="z-40 w-full h-full mx-auto bg-inherit md:container">
+	<header class="relative w-full min-h-[10vh] h-max">
+		<div class="hidden md:block h-max">
+			<Nav {theme} userData={data.user} />
+		</div>
+		<div class="fixed top-0 z-50 block w-full md:hidden h-max">
+			<MobileNav {theme} userData={data.user} />
+		</div>
+	</header>
+
+	<section class="w-full h-full min-h-[85vh] p-8 flex items-center justify-center overflow-y-auto">
+		<div class="flex flex-col items-center justify-center w-full gap-8">
+			<!-- Router Slot -->
+			<slot />
+			<!-- ---- / ---- -->
+		</div>
+	</section>
 </div>
