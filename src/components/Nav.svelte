@@ -6,7 +6,7 @@
 	export let theme: 'light' | 'dark' = 'light';
 </script>
 
-<AppBar class="px-8 py-6 !bg-inherit border-b border-primary-300">
+<AppBar class="px-8 py-6 !bg-inherit border-b-2 border-primary-300-600-token">
 	<svelte:fragment slot="lead">
 		<a href="/" class="h-[clamp(35px,_3.5vw,_3.5rem)] w-[clamp(120px,_12vw,_12rem)]">
 			{#if theme === 'dark'}
@@ -25,38 +25,36 @@
 	</svelte:fragment>
 	<svelte:fragment slot="trail">
 		<div class="flex flex-wrap items-center justify-center gap-8 w-max">
-			<ul class="font-sans font-medium">
-				<form method="POST">
-					<div class="flex flex-row gap-4">
-						{#if !userData}
-							<li>
-								<a
-									class="border border-current rounded-md btn text-primary-900 dark:text-primary-500"
-									href="/register">Register</a
-								>
-							</li>
-							<li>
-								<a
-									class="rounded-md btn bg-primary-900 text-primary-100 dark:bg-primary-600"
-									href="/login"
-									role="button">Login</a
-								>
-							</li>
-						{:else}
-							<li>
-								<button class="btn btn-sm" formaction="/logout" type="submit">Logout</button>
-							</li>
-						{/if}
+			<form method="POST">
+				<ul class="flex flex-row gap-4 font-semibold">
+					{#if !userData}
 						<li>
-							<div
-								class="flex items-center w-20 h-10 overflow-hidden border-2 rounded-full border-primary-500/50"
+							<a
+								class="border border-current rounded-md btn text-primary-900 dark:text-primary-500"
+								href="/register">Register</a
 							>
-								<LightSwitch width="w-full" height="h-full" rounded="rounded-full" />
-							</div>
 						</li>
-					</div>
-				</form>
-			</ul>
+						<li>
+							<a
+								class="rounded-md btn bg-primary-900 dark:bg-primary-700 text-surface-50-900-token"
+								href="/login"
+								role="button">Login</a
+							>
+						</li>
+					{:else}
+						<li>
+							<button class="btn btn-sm" formaction="/logout" type="submit">Logout</button>
+						</li>
+					{/if}
+					<li>
+						<div
+							class="flex items-center w-20 h-10 overflow-hidden border-2 rounded-full border-primary-500/50"
+						>
+							<LightSwitch width="w-full" height="h-full" rounded="rounded-full" />
+						</div>
+					</li>
+				</ul>
+			</form>
 		</div>
 	</svelte:fragment>
 </AppBar>

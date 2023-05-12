@@ -1,21 +1,20 @@
 <script lang="ts">
 	import { AppBar, LightSwitch } from '@skeletonlabs/skeleton';
 	import type { PageData } from '../routes/$types';
+	import IoIosMenu from 'svelte-icons/io/IoIosMenu.svelte';
 
 	export let userData: PageData['user'];
 	export let theme: 'light' | 'dark' = 'light';
 </script>
 
 <AppBar
-	slotDefault="flex-1 px-8 place-self-start"
-	slotTrail="w-max place-content-end"
-	class="z-50 flex px-8 py-6 border-b !bg-inherit border-primary-300"
+	slotLead="w-max place-self-start place-content-start"
+	slotDefault="place-self-center place-content-center"
+	slotHeadline="w-full place-self-center place-content-center "
+	class="z-50 px-8 py-4 border-b !bg-inherit border-primary-300 items-center gap-0"
 >
-	<svelte:fragment slot="lead">
-		<a href="/" class="p-1.5 rounded bg-primary-900 text-on-primary-token"> Menu </a>
-	</svelte:fragment>
 	<svelte:fragment slot="default">
-		<a href="/" class="h-[clamp(15px,_3.5vw,_3.5rem)] w-[clamp(60px,_12vw,_12rem)]">
+		<a href="/" class="h-max w-[clamp(36px,_36vw,_36rem)]">
 			{#if theme === 'dark'}
 				<img alt="logo" src="/images/logo-dark.png" class="object-cover w-full h-auto" />
 			{:else}
@@ -24,26 +23,34 @@
 		</a>
 	</svelte:fragment>
 	<svelte:fragment slot="headline">
-		<div class="flex items-center justify-center gap-8 mx-auto mt-4 w-max">
+		<div class="flex items-center justify-center w-full gap-4 mt-4">
+			<a href="/" class="flex-1 rounded btn btn-sm bg-surface-200 text-surface-900">
+				<div class="flex items-center gap-2">
+					<span class="w-5 h-5">
+						<IoIosMenu />
+					</span>
+					<span class="font-semibold">Menu</span>
+				</div>
+			</a>
 			<ul class="font-sans font-medium">
 				<form method="POST">
-					<div class="flex flex-row gap-4">
+					<div class="flex flex-row items-center gap-4">
 						{#if !userData}
-							<li>
+							<li class="flex-1">
 								<a
-									class="border border-current rounded-md btn btn-sm text-primary-900 dark:text-primary-500"
+									class="border border-current rounded-md btn btn-sm text-primary-500"
 									href="/register">Register</a
 								>
 							</li>
-							<li>
+							<li class="flex-1">
 								<a
-									class="rounded-md btn btn-sm bg-primary-900 dark:bg-primary-500 text-primary-100"
+									class="rounded-md btn btn-sm bg-primary-900 dark:bg-primary-500 text-surface-100-800-token"
 									href="/login"
 									role="button">Login</a
 								>
 							</li>
 						{:else}
-							<li>
+							<li class="flex-1">
 								<button class="btn btn-sm" formaction="/logout" type="submit">Logout</button>
 							</li>
 						{/if}
