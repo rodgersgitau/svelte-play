@@ -1,8 +1,8 @@
 <div
-	class="fixed w-full left-[50%] sm:max-w-screen-sm top-[50%] translate-x-[-50%] translate-y-[-50%]"
+	class="fixed w-full left-[50%] sm:max-w-screen-sm bottom-[50%] translate-x-[-50%] translate-y-[50%] p-4"
 >
 	<div
-		class="relative flex flex-col w-full h-full gap-8 p-10 sm:p-20 bg-[whitesmoke]/10 shadow shadow-primary-700/60 rounded-md"
+		class="relative flex flex-col mx-auto w-full h-full gap-8 p-10 sm:p-20 bg-[whitesmoke]/10 shadow shadow-primary-700/60 rounded-md"
 	>
 		<h2 class="text-2xl font-black uppercase text-primary-500">Register</h2>
 
