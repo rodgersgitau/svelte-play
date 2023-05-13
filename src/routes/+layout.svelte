@@ -20,13 +20,13 @@
 	onDestroy(unsubscribe);
 </script>
 
-<div class="z-40 w-full h-full mx-auto bg-inherit md:container">
+<div class="flex flex-col w-full h-full gap-4">
 	<header class="relative w-full min-h-[10vh] h-max">
-		<div class="hidden md:block h-max">
-			<Nav {theme} userData={data.user} />
+		<div class="hidden mx-auto md:block lg:container h-max">
+			<Nav {theme} userData={data?.user} />
 		</div>
 		<div class="fixed top-0 z-50 block w-full md:hidden h-max">
-			<MobileNav {theme} userData={data.user} />
+			<MobileNav {theme} userData={data?.user} />
 		</div>
 	</header>
 
