@@ -1,0 +1,49 @@
+[
+	{
+		"title": "Stack It",
+		"type": "arcade",
+		"link": "https://stack-it.netlify.app/",
+		"poster": "/images/play/stack-it.png",
+		"repository": "https://github.com/rodgersgitau/labs/tree/master/block-break",
+		"description": "A block stacking game akin to digital Jenga"
+	},
+	{
+		"title": "Matrix Digital Rain",
+		"type": "demo",
+		"link": "https://matrixdigitalrain.netlify.app/",
+		"poster": "/images/play/matrix-digital-rain.png",
+		"repository": "https://github.com/rodgersgitau/labs/tree/master/matrix-rain",
+		"description": "Ever watched these cult favourite movies? This is the opening sequence"
+	},
+	{
+		"title": "Block Breaker",
+		"type": "arcade",
+		"link": "https://block-breaker.netlify.app",
+		"poster": "/images/play/block-break.png",
+		"repository": "https://github.com/rodgersgitau/labs/tree/master/block-break",
+		"description": "A clone of the popular block breaking game"
+	},
+	{
+		"title": "Tetris",
+		"type": "arcade",
+		"link": "https://tetricks.netlify.app",
+		"poster": "/images/play/tetris.png",
+		"repository": "https://github.com/rodgersgitau/labs/tree/master/tetris",
+		"description": "A clone of the famous stacking game for different sized block shapes"
+	},
+	{
+		"title": "Noughts & Crosses",
+		"type": "layer",
+		"link": "https://clone-tictactoe.netlify.app",
+		"poster": "/images/play/tictactoe.png",
+		"repository": "https://github.com/rodgersgitau/labs/tree/master/noughts-and-crosses",
+		"description": "The classic game also known as tictactoe"
+	},
+	{
+		"title": "Monopoly",
+		"type": "board",
+		"poster": "/images/play/virtual-monopoly.png",
+		"repository": "https://github.com//rodgersgitau/labs/tree/master/monopoly",
+		"description": "The classic board game reimagined"
+	}
+]

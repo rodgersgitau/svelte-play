@@ -1,67 +1,119 @@
 <script lang="ts">
-	import { AppBar, LightSwitch } from '@skeletonlabs/skeleton';
-	import type { PageData } from '../routes/$types';
 	import IoIosMenu from 'svelte-icons/io/IoIosMenu.svelte';
+	import IoIosCloseCircle from 'svelte-icons/io/IoIosCloseCircle.svelte';
+
+	import { AppBar, Drawer, drawerStore, LightSwitch } from '@skeletonlabs/skeleton';
+	import type { DrawerSettings } from '@skeletonlabs/skeleton';
+
+	import { routes } from '$lib/routes';
+	import type { PageData } from '../routes/$types';
 
 	export let userData: PageData['user'];
 	export let theme: 'light' | 'dark' = 'light';
+
+	let showDrawer = false;
+
+	const drawerSettings: DrawerSettings = {
+		id: 'sidebar',
+		bgDrawer: 'fixed inset-0 bottom-[50%] translate-y-[50%] py-8 mx-auto bg-surface-900 text-white',
+		bgBackdrop: 'bg-gradient-to-tr from-indigo-500/50 via-purple-500/50 to-pink-500/50',
+		width: 'w-[280px] md:w-[480px]',
+		height: 'h-max',
+		padding: 'p-8',
+		rounded: 'rounded-xl'
+	};
+
+	const toggleDrawer = () => {
+		if (showDrawer) {
+			showDrawer = false;
+			return drawerStore.close();
+		}
+		showDrawer = true;
+		return drawerStore.open(drawerSettings);
+	};
 </script>
 
 <AppBar
-	slotLead="w-max place-self-start place-content-start"
-	slotDefault="place-self-center place-content-center"
-	slotHeadline="w-full place-self-center place-content-center "
-	class="z-50 px-8 py-4 border-b !bg-inherit border-primary-300 items-center gap-0"
+	slotLead="w-full place-self-start place-content-start"
+	slotDefault="place-self-end place-content-end"
+	slotTrail="w-max place-self-center"
+	class="w-full h-[12vh] z-50 p-4 border-b !bg-['papayawhip'] border-primary-300"
 >
+	<svelte:fragment slot="lead">
+		<div class="flex items-center gap-8">
+			<button
+				on:click={toggleDrawer}
+				class="p-1.5 border rounded-full btn btn-icon-lg border-primary-900 text-primary-900"
+			>
+				<IoIosMenu />
+			</button>
+			<a href="/" class="flex w-full h-full">
+				{#if theme === 'dark'}
+					<img alt="logo" src="/images/logo-dark.png" class="w-40 h-auto" />
+				{:else}
+					<img alt="logo" src="/images/logo.png" class="w-40 h-auto" />
+				{/if}
+			</a>
+		</div>
+	</svelte:fragment>
 	<svelte:fragment slot="default">
-		<a href="/" class="h-max w-[clamp(36px,_36vw,_36rem)]">
-			{#if theme === 'dark'}
-				<img alt="logo" src="/images/logo-dark.png" class="object-cover w-full h-auto" />
+		<div class="items-center hidden gap-4 mt-auto sm:flex w-max">
+			{#if !userData}
+				<a
+					class="border border-current rounded-md btn btn-sm text-primary-500"
+					href="/register"
+					role="button"
+				>
+					Register
+				</a>
+				<a
+					class="rounded-md btn btn-sm bg-primary-900 dark:bg-primary-500 text-surface-100-800-token"
+					href="/login"
+					role="button"
+				>
+					Login
+				</a>
 			{:else}
-				<img alt="logo" src="/images/logo.png" class="object-cover w-full h-auto" />
+				<button class="btn btn-sm" formaction="/logout" type="submit">Logout</button>
 			{/if}
-		</a>
+		</div>
 	</svelte:fragment>
 	<svelte:fragment slot="headline">
-		<div class="flex items-center justify-center w-full gap-4 mt-4">
-			<a href="/" class="flex-1 rounded btn btn-sm bg-surface-200 text-surface-900">
-				<div class="flex items-center gap-2">
-					<span class="w-5 h-5">
-						<IoIosMenu />
-					</span>
-					<span class="font-semibold">Menu</span>
-				</div>
-			</a>
-			<ul class="font-sans font-medium">
-				<form method="POST">
-					<div class="flex flex-row items-center gap-4">
-						{#if !userData}
-							<li class="flex-1">
-								<a
-									class="border border-current rounded-md btn btn-sm text-primary-500"
-									href="/register">Register</a
-								>
-							</li>
-							<li class="flex-1">
-								<a
-									class="rounded-md btn btn-sm bg-primary-900 dark:bg-primary-500 text-surface-100-800-token"
-									href="/login"
-									role="button">Login</a
-								>
-							</li>
-						{:else}
-							<li class="flex-1">
-								<button class="btn btn-sm" formaction="/logout" type="submit">Logout</button>
-							</li>
-						{/if}
-						<li>
-							<div class="flex items-center w-16 h-8 border-2 rounded-full border-primary-500/50">
-								<LightSwitch width="w-full" height="h-full" rounded="rounded-full" />
-							</div>
-						</li>
+		<Drawer>
+			<div class="absolute top-0 right-0 z-50">
+				<button on:click={toggleDrawer} class="btn btn-icon-lg p-1.5 rounded-full">
+					<IoIosCloseCircle />
+				</button>
+			</div>
+			<form class="w-full h-full">
+				<div class="flex flex-col items-center w-full h-full gap-8 p-8">
+					<div class="flex flex-col flex-1 w-full gap-2">
+						{#each routes as route}
+							<a
+								class="w-full text-sm border-2 rounded-lg shadow-md hover:bg-primary-hover-token dark:hover:bg-transparent hover:border-primary-500 btn btn-sm"
+								href={route.href}
+							>
+								{route.label}
+							</a>
+						{/each}
 					</div>
-				</form>
-			</ul>
-		</div>
+					<div class="grid items-center w-full gap-4 mt-auto font-semibold sm:hidden">
+						{#if !userData}
+							<a
+								class="border border-current rounded-md text-tertiary-500 btn btn-sm"
+								href="/register">Register</a
+							>
+							<a
+								class="rounded-md bg-tertiary-900 btn btn-sm dark:bg-tertiary-500 text-tertiary-50"
+								href="/login"
+								role="button">Login</a
+							>
+						{:else}
+							<button class="btn btn-sm" formaction="/logout" type="submit">Logout</button>
+						{/if}
+					</div>
+				</div>
+			</form>
+		</Drawer>
 	</svelte:fragment>
 </AppBar>

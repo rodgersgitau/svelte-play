@@ -20,18 +20,20 @@
 	onDestroy(unsubscribe);
 </script>
 
-<div class="z-40 w-full h-full mx-auto bg-inherit md:container">
-	<header class="relative w-full min-h-[10vh] h-max">
-		<div class="hidden md:block h-max">
-			<Nav {theme} userData={data.user} />
+<div class="relative grid w-full min-h-screen h-full grid-flow-row grid-rows-[16vh_1fr] pb-4">
+	<header class="relative row-span-1">
+		<div class="fixed top-0 z-auto hidden w-full h-full lg:block">
+			<div class="container mx-auto">
+				<Nav {theme} userData={data?.user} />
+			</div>
 		</div>
-		<div class="fixed top-0 z-50 block w-full md:hidden h-max">
-			<MobileNav {theme} userData={data.user} />
+		<div class="fixed top-0 z-auto block w-full h-full lg:hidden">
+			<MobileNav {theme} userData={data?.user} />
 		</div>
 	</header>
 
-	<section class="w-full h-full min-h-[85vh] p-8 flex items-center justify-center overflow-y-auto">
-		<div class="flex flex-col items-center justify-center w-full gap-8">
+	<section class="relative h-full row-span-1 row-start-2 overflow-y-auto">
+		<div class="w-full h-full p-4 mx-auto lg:p-0 lg:container">
 			<!-- Router Slot -->
 			<slot />
 			<!-- ---- / ---- -->
