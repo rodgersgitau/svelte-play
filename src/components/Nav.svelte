@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { AppBar, LightSwitch } from '@skeletonlabs/skeleton';
 	import type { PageData } from '../routes/$types';
+	import { routes } from '../lib/routes';
 
 	export let userData: PageData['user'];
 	export let theme: 'light' | 'dark' = 'light';
@@ -17,10 +18,17 @@
 		</a>
 	</svelte:fragment>
 	<svelte:fragment slot="default">
-		<div class="flex items-center gap-4 mx-auto font-sans w-max justify-evenly">
-			<a class="rounded-md anchor underline-offset-4 text-primary-900" href="/about">About</a>
-			<a class="rounded-md anchor underline-offset-4 text-primary-900" href="/docs">Documentation</a
-			>
+		<div
+			class="flex items-center justify-between gap-3 mx-auto font-sans font-semibold lg:gap-6 w-max"
+		>
+			{#each routes as route}
+				<a
+					class="text-sm border-2 border-transparent rounded-lg hover:bg-primary-hover-token dark:hover:bg-transparent hover:border-primary-500 btn btn-sm text-primary-900-50-token"
+					href={route.href}
+				>
+					{route.label}
+				</a>
+			{/each}
 		</div>
 	</svelte:fragment>
 	<svelte:fragment slot="trail">
