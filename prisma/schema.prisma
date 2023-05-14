@@ -10,12 +10,34 @@ datasource db {
   url      = "file:./dev.sqlite"
 }
 
+model Game {
+  id    String  @id @unique
+  name  String  @unique
+  Score Score[]
+
+  @@map("game")
+}
+
+model Score {
+  id      String @id @unique
+  user_id String
+  game_id String
+  score   Int    @default(0)
+  game    Game   @relation(references: [id], fields: [game_id], onDelete: Cascade)
+  user    User   @relation(references: [id], fields: [user_id], onDelete: Cascade)
+
+  @@index([game_id, user_id])
+  @@map("score")
+}
+
 model Article {
   id      Int    @id @default(autoincrement())
   title   String
   content String
-  User    User   @relation(fields: [userId], references: [id])
   userId  String
+  User    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("article")
 }
 
 model User {
@@ -25,6 +47,7 @@ model User {
   articles Article[]
   session  Session[]
   Key      Key[]
+  Score    Score[]
 
   @@map("user")
 }
