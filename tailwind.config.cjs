@@ -32,7 +32,10 @@ const config = {
 	},
 
 	// eslint-disable-next-line @typescript-eslint/no-var-requires
-	plugins: [...require('@skeletonlabs/skeleton/tailwind/skeleton.cjs')()]
+	plugins: [
+		require('@tailwindcss/typography'),
+		...require('@skeletonlabs/skeleton/tailwind/skeleton.cjs')()
+	]
 };
 
 module.exports = config;

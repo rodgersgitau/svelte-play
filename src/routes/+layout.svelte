@@ -6,7 +6,7 @@
 	import type { PageData } from './$types';
 	import { onDestroy } from 'svelte';
 	import type { Writable } from 'svelte/store';
-	import { AppBar, localStorageStore } from '@skeletonlabs/skeleton';
+	import { localStorageStore } from '@skeletonlabs/skeleton';
 	import Nav from '../components/Nav.svelte';
 	import MobileNav from '../components/MobileNav.svelte';
 

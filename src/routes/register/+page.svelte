@@ -18,7 +18,9 @@
 					<input class="p-4" type="password" id="password" name="password" required />
 				</div>
 
-				<button class="btn btn-lg text-on-surface-token bg-surface-700" type="submit">Login</button>
+				<button class="btn btn-lg text-on-surface-token bg-surface-700" type="submit"
+					>Register</button
+				>
 			</div>
 		</form>
 		<div class="flex items-center gap-2">
