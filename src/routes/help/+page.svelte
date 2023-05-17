@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SectionLayout from '../../components/SectionLayout.svelte';
+	import SectionLayout from '$lib/components/SectionLayout.svelte';
 	import { page } from '$app/stores';
 
 	const currentPage = $page.url.pathname;
