@@ -7,8 +7,8 @@
 	import { onDestroy } from 'svelte';
 	import type { Writable } from 'svelte/store';
 	import { localStorageStore } from '@skeletonlabs/skeleton';
-	import Nav from '../components/Nav.svelte';
-	import MobileNav from '../components/MobileNav.svelte';
+	import Nav from '$lib/components/Nav.svelte';
+	import MobileNav from '$lib/components/MobileNav.svelte';
 
 	export let data: PageData;
 	export let theme: 'light' | 'dark' = 'light';
