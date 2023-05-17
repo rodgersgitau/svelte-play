@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { AppBar, LightSwitch } from '@skeletonlabs/skeleton';
-	import type { PageData } from '../routes/$types';
-	import { routes } from '../lib/routes';
+	import type { PageData } from '../../routes/$types';
+	import { routes } from '$lib/routes';
 
 	export let userData: PageData['user'];
 	export let theme: 'light' | 'dark' = 'light';
 </script>
 
-<AppBar class="px-8 py-6 !bg-inherit border-b-2 border-primary-300-600-token">
+<AppBar class="px-8 py-6 !bg-inherit border-b-2 border-primary-300-600-token z-50">
 	<svelte:fragment slot="lead">
 		<a href="/" class="h-[clamp(35px,_3.5vw,_3.5rem)] w-[clamp(120px,_12vw,_12rem)]">
 			{#if theme === 'dark'}
@@ -27,9 +27,11 @@
 					href={route.href}
 				>
 					<div class="flex items-center gap-2">
-						<span class="w-6 aspect-square">
-							<svelte:component this={route.icon} />
-						</span>
+						{#if typeof route.icon !== 'undefined'}
+							<span class="w-6 aspect-square">
+								<svelte:component this={route.icon} />
+							</span>
+						{/if}
 						<span class="flex-1">{route.label}</span>
 					</div>
 				</a>
