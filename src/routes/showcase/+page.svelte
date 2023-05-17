@@ -7,7 +7,7 @@
 	import GiVendingMachine from 'svelte-icons/gi/GiVendingMachine.svelte';
 
 	import plays from '$lib/play.json';
-	import TabbedPage from '../../components/TabbedPage.svelte';
+	import TabbedPage from '$lib/components/TabbedPage.svelte';
 </script>
 
 <div class="relative flex flex-col items-center justify-center w-full h-full gap-8">

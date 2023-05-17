@@ -1,5 +1,5 @@
 <script lang="ts">
-	import DataTable from '../../components/DataTable.svelte';
+	import DataTable from '$lib/components/DataTable.svelte';
 </script>
 
 <div class="grid gap-4 w-full h-full grid-rows-[40px_1fr]">
