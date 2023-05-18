@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { Table, tableMapperValues } from '@skeletonlabs/skeleton';
 	import type { TableSource } from '@skeletonlabs/skeleton';
-	import TabbedPage from './TabbedPage.svelte';
 
 	const defaultSourceData = [
 		{ player: 'Hydrogen', game: 'Stack', score: 1.0079 },
@@ -10,7 +9,7 @@
 		{ player: 'Beryllium', game: 'Stack', score: 9.0122 },
 		{ player: 'Boron', game: '', score: 10.811 }
 	];
-	const defaultHeaders = ['rank', 'player', 'score'];
+	const defaultHeaders = ['rank', 'player', 'game', 'score'];
 
 	export let data: any[] = defaultSourceData;
 	// export let dataSortKey: string = 'game';
@@ -35,17 +34,6 @@
 	};
 </script>
 
-<div class="grid gap-4">
-	<form method="post">
-		<div class="grid items-center grid-cols-2 gap-2">
-			<div class="grid gap-2">
-				<label for="game">Game</label>
-				<input type="text" title="game" class="p-2 rounded-md input" />
-			</div>
-			<button class="rounded-md btn btn-lg variant-filled-surface" type="submit">Filter</button>
-		</div>
-	</form>
-	<div class="shadow table-container border-1 border-primary-200">
-		<Table source={tableSimple} interactive={true} on:selected={(e) => console.log(e)} />
-	</div>
+<div class="shadow table-container border-1 border-primary-200">
+	<Table source={tableSimple} interactive={true} on:selected={(e) => console.log(e)} />
 </div>
