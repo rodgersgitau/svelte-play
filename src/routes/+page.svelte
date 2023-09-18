@@ -1,8 +1,24 @@
 <script lang="ts">
+	import type { PageData } from './$types';
+
 	import IoMdPlayCircle from 'svelte-icons/io/IoMdPlayCircle.svelte';
+
+	export let data: PageData;
 </script>
 
-<div class="grid justify-center w-full h-full py-12">
+<div class="relative grid justify-center w-full h-full py-12">
+	<!-- Backdrop -->
+	{#if data.backdrops}
+		<div class="fixed inset-0 opacity-10 -z-10">
+			<div class="hidden h-full w-full dark:flex justify-center gap-4">
+				{#each data.backdrops as bgImg}
+					<div class="flex-1 w-1/4 aspect-video shadow">
+						<img class="w-full h-full object-cover transition" src={bgImg.src} alt={bgImg.alt} />
+					</div>
+				{/each}
+			</div>
+		</div>
+	{/if}
 	<!--Main-->
 	<div class="container flex flex-col flex-wrap items-center mx-auto md:flex-row">
 		<!--Left Col-->
