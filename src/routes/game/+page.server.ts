@@ -1,5 +1,6 @@
-import type { PageServerLoad } from './$types';
 import games from '$lib/play.json';
+
+import type { PageServerLoad } from './$types';
 
 const bgImgs = games.map((game) => ({
 	src: game.poster,
