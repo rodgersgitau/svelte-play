@@ -19,9 +19,6 @@ dependencies:
     version: 0.6.2
 
 devDependencies:
-  '@dimforge/rapier3d-compat':
-    specifier: ^0.11.2
-    version: 0.11.2
   '@playwright/test':
     specifier: ^1.28.1
     version: 1.38.0
@@ -144,10 +141,6 @@ packages:
   /@alloc/quick-lru@5.2.0:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
-    dev: true
-
-  /@dimforge/rapier3d-compat@0.11.2:
-    resolution: {integrity: sha512-vdWmlkpS3G8nGAzLuK7GYTpNdrkn/0NKCe0l1Jqxc7ZZOB3N0q9uG/Ap9l9bothWuAvxscIt0U97GVLr0lXWLg==}
     dev: true
 
   /@esbuild/android-arm64@0.18.20:

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { Table, tableMapperValues } from '@skeletonlabs/skeleton';
 	import type { TableSource } from '@skeletonlabs/skeleton';
-	import TabbedPage from './TabbedPage.svelte';
 
 	const defaultSourceData = [
 		{ player: 'Hydrogen', game: 'Stack', score: 1.0079 },

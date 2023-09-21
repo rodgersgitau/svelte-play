@@ -24,8 +24,8 @@ export const routes: IRoute[] = [
 		icon: IoIosInformationCircleOutline
 	},
 	{
-		href: '/showcase',
-		label: 'Showcase',
+		href: '/game',
+		label: 'Game',
 		icon: IoIosPlayCircle
 	},
 	{
